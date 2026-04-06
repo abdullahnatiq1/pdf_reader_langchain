@@ -14,7 +14,7 @@ def main():
     chain = buildChain(retriever)
 
     while True:
-        question = input("You: ")
+        question = input("\n You: ")
         if question.lower() == 'exit':
             break
         

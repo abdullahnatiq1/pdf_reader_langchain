@@ -8,11 +8,12 @@ def getRetriever(chunks = None):       #  yahan pa agar None add na krta to ye d
     if chunks:
         vectorestore = Chroma.from_documents(
             documents = chunks,
-            embedding = embeddings
+            embedding = embeddings,
+            persist_directory = chromaDIR       # this line helps to store chunks in disks not in RAM
         )
     else:
         vectorestore = Chroma(
             persist_directory = chromaDIR,
-            embedding_function = embeddings
+            embedding_function = embeddings 
         )
-    return vectorestore.as_retriever(search_kwarg = {"k" : 5})
+    return vectorestore.as_retriever(search_kwargs = {"k" : 5})
